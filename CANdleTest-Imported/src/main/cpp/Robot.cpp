@@ -10,13 +10,16 @@ void Robot::RobotPeriodic() {}
 void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
 
-void Robot::TeleopInit() {}
-void Robot::TeleopPeriodic()
+void Robot::TeleopInit()
 {
-  myCANdle.stepLEDs();
+  myCANdle.startLED();
 }
+void Robot::TeleopPeriodic() {}
 
-void Robot::DisabledInit() {}
+void Robot::DisabledInit()
+{
+  myCANdle.endLED();
+}
 void Robot::DisabledPeriodic() {}
 
 void Robot::TestInit() {}

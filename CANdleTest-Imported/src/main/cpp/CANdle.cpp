@@ -3,9 +3,9 @@
 
 CANdle::CANdle()
 {
-    r = 255;
+    r = 0;
     g = 0;
-    b = 0;
+    b = 255;
 
     ctre::phoenix::led::CANdleConfiguration config;
     config.stripType = ctre::phoenix::led::LEDStripType::RGB; // set the strip type to RGB
@@ -15,5 +15,18 @@ CANdle::CANdle()
 
 void CANdle::stepLEDs()
 {
+    r = r+1;
+    r %= 256;
     candle.SetLEDs(r, g, b); // set the CANdle LEDs to white
+}
+
+void CANdle::startLED()
+{
+    std::cout << candle.GetMaxSimultaneousAnimationCount();
+    candle.Animate(larson, 0);
+}
+
+void CANdle::endLED()
+{
+    candle.ClearAnimation(0);
 }
